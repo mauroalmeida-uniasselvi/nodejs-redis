@@ -1,0 +1,15 @@
+
+services:
+  redis:
+    image: redis:7.2
+    command: redis-server --requirepass uniasselvi
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      start_period: 5s
+
+volumes:
+  redis_data:
